@@ -8,7 +8,7 @@ import java.util.Observable;
  * Created by Administrator on 2017/5/13 0013.
  */
 @Component
-public class ClipBoard extends Observable{
+public class ClipBoardModel extends Observable{
 
     public String getClipBoardText() {
         return clipBoardText;
@@ -22,7 +22,7 @@ public class ClipBoard extends Observable{
 
     private String clipBoardText;
 
-    public ClipBoard() {
+    public ClipBoardModel() {
         this.clipBoardText = "";
     }
 }

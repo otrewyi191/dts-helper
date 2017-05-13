@@ -10,4 +10,7 @@ public class ContainsDts {
     public boolean test(String s) {
         return s.toLowerCase().contains("dts");
     }
+    public String getDts(String s) {
+        return "dts123456";
+    }
 }

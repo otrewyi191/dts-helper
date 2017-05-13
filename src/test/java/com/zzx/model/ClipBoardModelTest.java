@@ -4,23 +4,21 @@ import com.zzx.TestBase;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Administrator on 2017/5/13 0013.
  */
-public class ClipBoardTest extends TestBase {
+public class ClipBoardModelTest extends TestBase {
     @Autowired
-    private ClipBoard clipBoard;
+    private ClipBoardModel clipBoardModel;
 
     @Test
     public void test1(){
-        assert clipBoard!=null;
+        assert clipBoardModel !=null;
     }
     @Test
     public void test2(){
         String toSet="zzxtest";
-        clipBoard.setClipBoardText(toSet);
-        assert clipBoard.getClipBoardText().equalsIgnoreCase("zzxtest");
+        clipBoardModel.setClipBoardText(toSet);
+        assert clipBoardModel.getClipBoardText().equalsIgnoreCase("zzxtest");
     }
 }

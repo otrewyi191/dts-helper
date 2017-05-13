@@ -6,16 +6,16 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by Administrator on 2017/5/13 0013.
  */
 @Component
-public class CurrentDts {
+public class CurrentDtsModel extends Observable{
     private String dtsNumber;
     @Autowired
-    private ClipBoard clipBoard;
+    private ClipBoardModel clipBoardModel;
+
     @Autowired
     private ContainsDts containsDts;
 
@@ -27,17 +27,23 @@ public class CurrentDts {
         this.dtsNumber = dtsNumber;
     }
 
-    public CurrentDts() {
+    public CurrentDtsModel() {
 
 
     }
 
     @PostConstruct
     public void postConstruct() {
-        clipBoard.addObserver((Observable o, Object arg) -> {
-            if (((ClipBoard) o).getClipBoardText().toLowerCase().contains("dts")) {
-                dtsNumber = "dts found";
-                System.out.println(dtsNumber);
+        clipBoardModel.addObserver((o, arg) -> {
+            String clipBoardText = ((ClipBoardModel) o).getClipBoardText();
+            if (containsDts.test(clipBoardText)) {
+                setDtsNumber("dts found");
+
+                //sent msg only when contain dts
+                setChanged();
+                notifyObservers();
+            } else {
+                setDtsNumber("dts not found");
             }
         });
     }
