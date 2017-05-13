@@ -1,5 +1,6 @@
 package com.zzx.model;
 
+import com.zzx.entity.CurrentDts;
 import com.zzx.util.ContainsDts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,8 @@ import java.util.Observable;
  */
 @Component
 public class CurrentDtsModel extends Observable{
-    private String dtsNumber;
+    @Autowired
+    private CurrentDts currentDts;
     @Autowired
     private ClipBoardModel clipBoardModel;
 
@@ -20,11 +22,11 @@ public class CurrentDtsModel extends Observable{
     private ContainsDts containsDts;
 
     public String getDtsNumber() {
-        return dtsNumber;
+        return currentDts.getDtsNumber();
     }
 
     public void setDtsNumber(String dtsNumber) {
-        this.dtsNumber = dtsNumber;
+        currentDts.setDtsNumber(dtsNumber);
     }
 
     public CurrentDtsModel() {
@@ -35,7 +37,7 @@ public class CurrentDtsModel extends Observable{
     @PostConstruct
     public void postConstruct() {
         clipBoardModel.addObserver((o, arg) -> {
-            String clipBoardText = ((ClipBoardModel) o).getClipBoardText();
+            String clipBoardText = ((ClipBoardModel) o).getClipBoard();
             if (containsDts.test(clipBoardText)) {
                 setDtsNumber("dts found");
 

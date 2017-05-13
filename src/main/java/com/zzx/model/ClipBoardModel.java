@@ -1,5 +1,7 @@
 package com.zzx.model;
 
+import com.zzx.entity.ClipBoard;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Observable;
@@ -10,19 +12,17 @@ import java.util.Observable;
 @Component
 public class ClipBoardModel extends Observable{
 
-    public String getClipBoardText() {
-        return clipBoardText;
+    public String getClipBoard() {
+        return clipBoard.getClipBoardText();
     }
 
-    public void setClipBoardText(String clipBoardText) {
-        this.clipBoardText = clipBoardText;
+    public void setClipBoard(String s) {
+        clipBoard.setClipBoardText(s);
         setChanged();
         notifyObservers();
     }
 
-    private String clipBoardText;
+    @Autowired
+    private ClipBoard clipBoard;
 
-    public ClipBoardModel() {
-        this.clipBoardText = "";
-    }
 }

@@ -18,7 +18,7 @@ public class ClipBoardModelTest extends TestBase {
     @Test
     public void test2(){
         String toSet="zzxtest";
-        clipBoardModel.setClipBoardText(toSet);
-        assert clipBoardModel.getClipBoardText().equalsIgnoreCase("zzxtest");
+        clipBoardModel.setClipBoard(toSet);
+        assert clipBoardModel.getClipBoard().equalsIgnoreCase("zzxtest");
     }
 }

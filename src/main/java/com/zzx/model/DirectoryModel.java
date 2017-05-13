@@ -1,5 +1,6 @@
 package com.zzx.model;
 
+import com.zzx.entity.Directory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,21 +16,22 @@ public class DirectoryModel extends Observable{
     private CurrentDtsModel currentDtsModel;
 
     public String getDirName() {
-        return dirName;
+        return directory.getDirName();
     }
 
     public void setDirName(String dirName) {
-        this.dirName = dirName;
+        directory.setDirName(dirName);
     }
 
-    private String dirName;
+    @Autowired
+    private Directory directory;
 
     @PostConstruct
     public void changeDirName()
     {
         currentDtsModel.addObserver(
                 (o,arg)->{
-                    dirName="c:/a/b/c/d/"+ currentDtsModel.getDtsNumber();
+                    directory.setDirName("c:/a/b/c/d/"+ currentDtsModel.getDtsNumber());
                     setChanged();
                     notifyObservers();
                 }

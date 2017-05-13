@@ -17,12 +17,12 @@ public class DirectoryModelTest extends TestBase {
 
     @Test
     public void setDirName() throws Exception {
-        clipBoardModel.setClipBoardText("abc");
+        clipBoardModel.setClipBoard("abc");
         System.out.println(directoryModel.getDirName());
     }
     @Test
     public void setDirName1() throws Exception {
-        clipBoardModel.setClipBoardText("dtsabc");
+        clipBoardModel.setClipBoard("dtsabc");
         String dirName = directoryModel.getDirName();
         assert dirName.toLowerCase().startsWith("c:/");
     }

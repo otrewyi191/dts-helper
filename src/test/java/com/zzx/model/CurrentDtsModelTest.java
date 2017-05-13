@@ -17,13 +17,13 @@ public class CurrentDtsModelTest extends TestBase {
 
     @Test
     public void test1() throws Exception {
-        clipBoardModel.setClipBoardText("abc");
+        clipBoardModel.setClipBoard("abc");
         assert currentDtsModel.getDtsNumber().equalsIgnoreCase("dts not found");
     }
 
     @Test
     public void test2() throws Exception {
-        clipBoardModel.setClipBoardText("abc dts123");
+        clipBoardModel.setClipBoard("abc dts123");
         assert currentDtsModel.getDtsNumber().equalsIgnoreCase("dts found");
     }
 }
